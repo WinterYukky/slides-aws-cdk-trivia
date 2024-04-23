@@ -304,13 +304,13 @@ while True:
 ```
 
 ```sh {none|all}
+# 修正した Python コードを実行
 $ python3 index.py
 ```
 
-
 ::right::
 
-<div class="ml-5">
+<div class="ml-5 h-80">
 
 ```sh {none|all|4}
 $ ps -x
@@ -323,8 +323,8 @@ $ ps -x
 ```
 
   <v-click at="4">
-    <div class="text-xl text-center mt-7">jsii-runtime.js が動いている！</div>
-    <arrow x1="650" y1="450" x2="650" y2="370" class="text-red"/>
+    <div class="text-xl text-center mt-7">jsii-runtime.js が動いていることを確認</div>
+    <arrow x1="650" y1="360" x2="650" y2="280" class="text-red"/>
   </v-click>
 </div>
 
@@ -332,7 +332,7 @@ $ ps -x
 
 # 直接 jsii-runtime を実行する
 
-```text {all|1-2|3|4|5|6|7|8}
+```json {all|1-2|3|4|5|6|7|8}
 $ node --max-old-space-size=4069 /tmp/tmprtmlxn58/bin/jsii-runtime.js
 {"hello":"@jsii/runtime@1.97.0"}
 {"api": "load", "name": "jsii-example", "version": "1.0.0", "tarball": "dist/js/jsii-example@1.0.0.jsii.tgz"}
@@ -342,6 +342,9 @@ $ node --max-old-space-size=4069 /tmp/tmprtmlxn58/bin/jsii-runtime.js
 {"api": "invoke", "objref": {"$jsii.byref": "jsii-example.Greeter@10000"}, "method": "greet"}
 {"ok":{"result":"Hello, jsii!"}}
 ```
+
+命令内容の詳細は jsii Kernel API ドキュメントを参照  
+https://aws.github.io/jsii/specification/3-kernel-api/
 
 ---
 
