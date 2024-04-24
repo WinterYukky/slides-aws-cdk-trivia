@@ -15,7 +15,7 @@ mdc: true
 hideInToc: true
 ---
 
-# AWS CDK のトリビア
+# AWS CDK の<span class="font-bold underline decoration-solid underline-offset-8">トリ</span>ビア
 ～明日使えるムダ知識をあなたに～
 
 アマゾン ウェブ サービス ジャパン合同会社<br>
@@ -23,11 +23,18 @@ hideInToc: true
 吉川 幸弘<br>
 2024/4/24
 
+<style>
+.slidev-layout {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url(/profile.png);
+}
+
+</style>
+
 ---
 hideInToc: true
 ---
 
-<Toc maxDepth="2"/>
+<Toc maxDepth="1"/>
 
 ---
 layout: intro
@@ -74,20 +81,20 @@ layout: cover
 
 # AWS CDK は複数の言語で書くことができる
 
-## 対応言語
-
-- JavaScript, TypeScript
-- Python
-- Java
-- .NET
-- Go
+<div class="grid grid-cols-3 gap-6 place-content-center h-80 text-center">
+  <div class="py-4 bg-cyan-400 rounded">JavaScript</div>
+  <div class="py-4 bg-cyan-400 rounded">TypeScript</div>
+  <div class="py-4 bg-cyan-400 rounded">Python</div>
+  <div class="py-4 bg-cyan-400 rounded">Java</div>
+  <div class="py-4 bg-cyan-400 rounded">.NET</div>
+  <div class="py-4 bg-cyan-400 rounded">Go</div>
+</div>
 
 ---
 layout: center
 ---
 
-# トリビア
-## AWS CDK を Python や Java で書いても実際の処理は Node.js が行っている
+# AWS CDK を Python や Java で書いても実際の処理は Node.js が行っている
 
 実際に動かしてみると Node.js ランタイムが必要。なぜか？
 
@@ -211,9 +218,8 @@ layout: two-cols-header
 
 ::left::
 
-a
 
-```python
+```python {all|none}
 # さっきの TypeScript コードから作られたモジュール
 from module_name.core import Greeter 
 
@@ -221,7 +227,7 @@ greeter = Greeter(greetee='jsii')
 print(greeter.greet())
 ```
 
-```sh
+```sh {none|all|none}{at:1}
 $ python3 index.py
 Hello, jsii!
 ```
@@ -230,7 +236,7 @@ Hello, jsii!
 
 <div class="ml-5">
 
-```python {none|all|8-9}{at:1}
+```python {none|all|8-9}{at:2}
 class Greeter(metaclass=jsii.JSIIMeta, jsii_type="jsii-example.Greeter"):
 
     def __init__(self, *, greetee: builtins.str) -> None:
@@ -242,7 +248,7 @@ class Greeter(metaclass=jsii.JSIIMeta, jsii_type="jsii-example.Greeter"):
         return typing.cast(builtins.str, jsii.invoke(self, "greet", []))
 ```
 
-```ts {none|all|9-11}{at:1}
+```ts {none|all|9-11}{at:2}
 // 元のコード
 export class Greeter {
   private readonly greetee: string;
@@ -258,6 +264,9 @@ export class Greeter {
 ```
 
 </div>
+<v-click at="3" class="static">
+  <div class="absolute bottom-50 left-40 text-2xl">変換されたコードが異なる</div>
+</v-click>
 
 ---
 layout: two-cols-header
